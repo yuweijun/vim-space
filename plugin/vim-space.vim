@@ -43,8 +43,8 @@ endfunction
 function! SpaceAddAtSlashCommentStart()
     for linenum in range(1, line('$'))
         let oldline = getline(linenum)
-        let newline = substitute(oldline, '^\(\s*\/\/\)\s*', '\1', "")
-        let newline = substitute(newline, '^\(\s*\/\/\)', '\1 ', "")
+        let newline = substitute(oldline, '^\(\s*\/\/\)\s*', '\1', '')
+        let newline = substitute(newline, '^\(\s*\/\/\)', '\1 ', '')
         call setline(linenum, newline)
     endfor
 endfunction
@@ -55,11 +55,19 @@ endfunction
 " :%s/ctrl+k, space, space/space/g
 " ------------------------------------------------------------------------------
 
-function! ReplaceNonBlockingSpace()
+function! SpaceReplaceNonBlockingSpace()
     for linenum in range(1, line('$'))
         let oldline = getline(linenum)
-        let newline = substitute(oldline, ' ', ' ', "g")
+        let newline = substitute(oldline, ' ', ' ', 'g')
         call setline(linenum, newline)
     endfor
 endfunction
+
+" ------------------------------------------------------------------------------
+" nmap for vim-space
+" ------------------------------------------------------------------------------
+
+nmap <silent> <leader>sa :call SpaceAddBetweenEnglishChinese()<CR>
+nmap <silent> <leader>sc :call SpaceAddAtSlashCommentStart()<CR>
+nmap <silent> <leader>sr :call SpaceReplaceNonBlockingSpace()<CR>
 
