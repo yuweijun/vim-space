@@ -27,7 +27,7 @@ endfunction
 " 删除中文字符和英文字符相接位置的空格
 " ------------------------------------------------------------------------------
 
-function! SpaceRemoveBetweenEnglishChinese()
+function! SpaceDeleteBetweenEnglishChinese()
     for linenum in range(1, line('$'))
         let oldline = getline(linenum)
         let newline = substitute(oldline, '\([\u4e00-\u9fa5]\)\s\(\w\)', '\1\2', 'g')
@@ -69,5 +69,6 @@ endfunction
 
 nmap <silent> <leader>sa :call SpaceAddBetweenEnglishChinese()<CR>
 nmap <silent> <leader>sc :call SpaceAddAtSlashCommentStart()<CR>
+nmap <silent> <leader>sd :call SpaceDeleteBetweenEnglishChinese()<CR>
 nmap <silent> <leader>sr :call SpaceReplaceNonBlockingSpace()<CR>
 
