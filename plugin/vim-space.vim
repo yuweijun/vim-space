@@ -69,8 +69,6 @@ endfunction
 " nmap for vim-space
 " ------------------------------------------------------------------------------
 
-nmap <silent><leader>sb i <Esc>
-nmap <silent><leader>sp a <Esc>
 nmap <silent><leader>sa :call SpaceAddBetweenEnglishChinese()<CR>
 nmap <silent><leader>sc :call SpaceAddAtSlashCommentStart()<CR>
 nmap <silent><leader>sd :call SpaceDeleteBetweenEnglishChinese()<CR>
